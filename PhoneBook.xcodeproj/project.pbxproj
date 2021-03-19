@@ -14,6 +14,7 @@
 		698016B326034CFF000B8DB3 /* PhoneBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 698016B126034CFF000B8DB3 /* PhoneBook.xcdatamodeld */; };
 		698016B526034D03000B8DB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 698016B426034D03000B8DB3 /* Assets.xcassets */; };
 		698016B826034D03000B8DB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 698016B626034D03000B8DB3 /* LaunchScreen.storyboard */; };
+		698016C226046242000B8DB3 /* AddContantactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698016C126046242000B8DB3 /* AddContantactViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		698016B426034D03000B8DB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		698016B726034D03000B8DB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		698016B926034D03000B8DB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		698016C126046242000B8DB3 /* AddContantactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContantactViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				698016AA26034CFF000B8DB3 /* SceneDelegate.swift */,
 				698016AC26034CFF000B8DB3 /* ViewController.swift */,
 				698016AE26034CFF000B8DB3 /* Main.storyboard */,
+				698016C126046242000B8DB3 /* AddContantactViewController.swift */,
 				698016B426034D03000B8DB3 /* Assets.xcassets */,
 				698016B626034D03000B8DB3 /* LaunchScreen.storyboard */,
 				698016B926034D03000B8DB3 /* Info.plist */,
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				698016AD26034CFF000B8DB3 /* ViewController.swift in Sources */,
+				698016C226046242000B8DB3 /* AddContantactViewController.swift in Sources */,
 				698016A926034CFF000B8DB3 /* AppDelegate.swift in Sources */,
 				698016AB26034CFF000B8DB3 /* SceneDelegate.swift in Sources */,
 				698016B326034CFF000B8DB3 /* PhoneBook.xcdatamodeld in Sources */,
