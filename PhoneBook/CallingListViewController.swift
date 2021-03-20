@@ -1,19 +1,17 @@
 //
-//  AddContantactViewController.swift
+//  CallingListViewController.swift
 //  PhoneBook
 //
-//  Created by Gushchin Ilya on 19.03.2021.
+//  Created by Gushchin Ilya on 20.03.2021.
 //
 
 import UIKit
 
-class AddContantactViewController: UIViewController {
+class CallingListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Add contact"
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Light", size: 17)!]
-        UINavigationBar.appearance().titleTextAttributes = attributes
+        title = "Contacts"
         // Do any additional setup after loading the view.
     }
     

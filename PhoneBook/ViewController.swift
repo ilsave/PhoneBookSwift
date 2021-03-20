@@ -31,6 +31,17 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         title = "Contacts"
     }
+    
+    struct Person {
+        var nickName: String
+        var number: String
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if ( segue.identifier == "gotoAddContact") {
+            print("i was there")
+        } 
+    }
 }
 
 extension ViewController: UITableViewDelegate {
@@ -39,6 +50,17 @@ extension ViewController: UITableViewDelegate {
         print("you tapped me !")
         print(footballPlayers[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        //other approach
+//        let viewController = ChangeContactInfoViewController()
+//      //  viewController.personName.text = "qwq"
+//        navigationController?.pushViewController(viewController, animated: true)
+        
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChangeContactInfoViewController") as! ChangeContactInfoViewController
+        vc.self.setName("wqwqwq")
+      //  vc.personName.text = footballPlayers[indexPath.row]
+        self.present(vc, animated: true, completion: nil)
     }
 }
 

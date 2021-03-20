@@ -1,19 +1,26 @@
 //
-//  AddContantactViewController.swift
+//  ChangeContactInfoViewController.swift
 //  PhoneBook
 //
-//  Created by Gushchin Ilya on 19.03.2021.
+//  Created by Gushchin Ilya on 20.03.2021.
 //
 
 import UIKit
 
-class AddContantactViewController: UIViewController {
-
+class ChangeContactInfoViewController: UIViewController {
+    
+    
+    var name: String = "Unknown Error"
+    @IBOutlet weak var personName: UITextField!
+    @IBOutlet weak var phoneNumber: UITextField!
+    
+    public func setName(_ nameMain: String){
+        self.personName.text = nameMain
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Add contact"
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Light", size: 17)!]
-        UINavigationBar.appearance().titleTextAttributes = attributes
+      //  personName.text = name
         // Do any additional setup after loading the view.
     }
     
