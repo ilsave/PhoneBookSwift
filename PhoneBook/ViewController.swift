@@ -156,30 +156,7 @@ extension ViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChangeContactInfoViewController") as! ChangeContactInfoViewController
-        //        vc.viewController = self
-        //        vc.setVariablePerson(person: Person.init(id: contactsGroup[indexPath.section].personList[indexPath.row].id,
-        //                                                 nickNamelabel: contactsGroup[indexPath.section].personList[indexPath.row].nickName,
-        //                                                 numberLabel: contactsGroup[indexPath.section].personList[indexPath.row].number))
-        //        self.present(vc, animated: true, completion: nil)
-        
-        
-        
-//        if let url = URL(string: "tel://\(contactsGroup[indexPath.section].personList[indexPath.row].number)"),
-//           UIApplication.shared.canOpenURL(url){
-//            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//        }
-        
-//        if let phoneCallURL = URL(string: "tel://\(contactsGroup[indexPath.section].personList[indexPath.row].number)") {
-//            let application:UIApplication = UIApplication.shared
-//            if (application.canOpenURL(phoneCallURL)) {
-//                application.open(phoneCallURL, options: [:], completionHandler: nil)
-//            }
-//          }
-        
-//        guard let number = URL(string: "tel://" + contactsGroup[indexPath.section].personList[indexPath.row].number) else { return }
-//        UIApplication.shared.open(number)
-        
+       
         if let phoneURL = NSURL(string: ("tel://" + contactsGroup[indexPath.section].personList[indexPath.row].number)) {
 
             let alert = UIAlertController(title: ("Call " + contactsGroup[indexPath.section].personList[indexPath.row].number + "?"), message: nil, preferredStyle: .alert)
@@ -207,9 +184,6 @@ extension ViewController: UITableViewDelegate {
 
 
 extension ViewController: UITableViewDataSource{
-    
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactsGroup[section].personList.count

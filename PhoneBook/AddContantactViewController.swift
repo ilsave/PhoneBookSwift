@@ -22,6 +22,9 @@ class AddContantactViewController: UIViewController {
     }
     
     @IBAction func onClickCreateButton(_ sender: Any) {
+        let alert = UIAlertController(title: ("Please enter valid data"), message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
         viewController?.newContact(nameLabel: textNameField.text ?? "Error", phoneNumberLabel: phoneNumberFiled.text ?? "Error")
         navigationController?.popToRootViewController(animated: true)
     }

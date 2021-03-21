@@ -17,6 +17,8 @@
 		698016B526034D03000B8DB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 698016B426034D03000B8DB3 /* Assets.xcassets */; };
 		698016B826034D03000B8DB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 698016B626034D03000B8DB3 /* LaunchScreen.storyboard */; };
 		698016C226046242000B8DB3 /* AddContantactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698016C126046242000B8DB3 /* AddContantactViewController.swift */; };
+		69F50A602607A30B00F827A4 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F50A5E2607A30B00F827A4 /* CustomTableViewCell.swift */; };
+		69F50A612607A30B00F827A4 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69F50A5F2607A30B00F827A4 /* CustomTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		698016B726034D03000B8DB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		698016B926034D03000B8DB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		698016C126046242000B8DB3 /* AddContantactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContantactViewController.swift; sourceTree = "<group>"; };
+		69F50A5E2607A30B00F827A4 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		69F50A5F2607A30B00F827A4 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				698016B626034D03000B8DB3 /* LaunchScreen.storyboard */,
 				698016B926034D03000B8DB3 /* Info.plist */,
 				698016B126034CFF000B8DB3 /* PhoneBook.xcdatamodeld */,
+				69F50A5E2607A30B00F827A4 /* CustomTableViewCell.swift */,
+				69F50A5F2607A30B00F827A4 /* CustomTableViewCell.xib */,
 			);
 			path = PhoneBook;
 			sourceTree = "<group>";
@@ -138,6 +144,7 @@
 			files = (
 				698016B826034D03000B8DB3 /* LaunchScreen.storyboard in Resources */,
 				698016B526034D03000B8DB3 /* Assets.xcassets in Resources */,
+				69F50A612607A30B00F827A4 /* CustomTableViewCell.xib in Resources */,
 				698016B026034CFF000B8DB3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +158,7 @@
 			files = (
 				698016AD26034CFF000B8DB3 /* ViewController.swift in Sources */,
 				6929C6232605FCC10061012D /* CallingListViewController.swift in Sources */,
+				69F50A602607A30B00F827A4 /* CustomTableViewCell.swift in Sources */,
 				6929C62626060F6E0061012D /* ChangeContactInfoViewController.swift in Sources */,
 				698016C226046242000B8DB3 /* AddContantactViewController.swift in Sources */,
 				698016A926034CFF000B8DB3 /* AppDelegate.swift in Sources */,
