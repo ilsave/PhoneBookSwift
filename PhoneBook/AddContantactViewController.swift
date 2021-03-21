@@ -17,6 +17,21 @@ class AddContantactViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func onClickCreateButton(_ sender: Any) {
+        //self.navigationController?.popViewController(animated: true)
+        //self.dismiss(animated: true, completion: nil)
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "gotoBackContactList"){
+           // self.dismiss(animated: false, completion: nil)
+           // self.navigationController?.popViewController(animated: true)
+            print("found!")
+        }
+    }
+    
 
     /*
     // MARK: - Navigation

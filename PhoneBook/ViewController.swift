@@ -35,10 +35,10 @@ class ViewController: UIViewController {
     }
     
     class ContactGroup {
-        var letter: Character
+        var letter: String
         var personList: [Person]
         
-        init(letter: Character, personList: [Person] ) {
+        init(letter: String, personList: [Person] ) {
             self.letter = letter
             self.personList = personList
         }
@@ -107,7 +107,7 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return footballPlayers.count
+        return contactsGroup[section].personList.count
     }
     
     //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -116,19 +116,18 @@ extension ViewController: UITableViewDataSource{
     //    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        var letters = Set<Character>()
-        for item in footballPlayers {
-            letters.insert(item.character(at: 1) ?? "s")
-        }
-        return letters.count
+        return contactsGroup.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = footballPlayers[indexPath.row]
+        cell.textLabel?.text = contactsGroup[indexPath.section].personList[indexPath.row].nickName
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return contactsGroup[section].letter
     }
 }
 
