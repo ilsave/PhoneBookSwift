@@ -40,9 +40,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var tableView:  UITableView!
     
-    
     var contactsGroup = [ContactGroup]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,14 +105,12 @@ class ViewController: UIViewController {
         if (bol == false){
             contactsGroup.append(ContactGroup.init(letter: String(name.prefix(1)), personList: [Person.init(id: count + 1, nickNamelabel: name ,numberLabel: phoneNumber)]))
         }
-        [self.tableView.reloadData()]
-        //getContactById(id: 6)
-        //contactChanged(person: nil)
+        self.tableView.reloadData()
     }
     
     
     func contactChanged(person: Person) {
-        var id = person.id
+        let id = person.id
         
         for indexLetter in 0..<contactsGroup.count {
             for indexContact in 0..<contactsGroup[indexLetter].personList.count{
@@ -138,8 +134,7 @@ class ViewController: UIViewController {
             }
         }
         
-        [self.tableView .reloadData()]
-        
+        self.tableView .reloadData()
     }
     
     func sortChangedData(){
@@ -156,14 +151,14 @@ extension ViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-       
+        
         if let phoneURL = NSURL(string: ("tel://" + contactsGroup[indexPath.section].personList[indexPath.row].number)) {
-
+            
             let alert = UIAlertController(title: ("Call " + contactsGroup[indexPath.section].personList[indexPath.row].number + "?"), message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Call", style: .default, handler: { (action) in
                 UIApplication.shared.open(phoneURL as URL, options: [:], completionHandler: nil)
             }))
-
+            
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -179,8 +174,8 @@ extension ViewController: UITableViewDelegate {
         CallingListViewController.callingList.append(Call.init(toWho: contactsGroup[indexPath.section].personList[indexPath.row].nickName, time: dateString))
         
     }
-        
-    }
+    
+}
 
 
 extension ViewController: UITableViewDataSource{
@@ -209,7 +204,7 @@ extension ViewController: UITableViewDataSource{
         let delete = UIContextualAction(style: .normal, title: "Delete") { (action, view, completionHandler) in
             completionHandler(true)
             self.contactsGroup[indexPath.section].personList.remove(at: indexPath.row)
-            [self.tableView.reloadData()]
+            self.tableView.reloadData()
         }
         delete.image = UIImage(systemName: "trash")
         delete.backgroundColor = .red
@@ -246,4 +241,3 @@ extension String {
         return self[indexPosition]
     }
 }
-
