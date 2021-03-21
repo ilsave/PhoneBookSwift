@@ -15,7 +15,7 @@ class AddContantactViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Add contact"
+        title = "title"
         let attributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Light", size: 17)!]
         UINavigationBar.appearance().titleTextAttributes = attributes
         // Do any additional setup after loading the view.
@@ -24,6 +24,7 @@ class AddContantactViewController: UIViewController {
     @IBAction func onClickCreateButton(_ sender: Any) {
         let alert = UIAlertController(title: ("Please enter valid data"), message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
         self.present(alert, animated: true, completion: nil)
         viewController?.newContact(nameLabel: textNameField.text ?? "Error", phoneNumberLabel: phoneNumberFiled.text ?? "Error")
         navigationController?.popToRootViewController(animated: true)
