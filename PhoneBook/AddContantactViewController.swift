@@ -8,6 +8,10 @@
 import UIKit
 
 class AddContantactViewController: UIViewController {
+    
+    var viewController: ViewController?
+    @IBOutlet var textNameField: UITextField!
+    @IBOutlet var phoneNumberFiled: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,29 +22,7 @@ class AddContantactViewController: UIViewController {
     }
     
     @IBAction func onClickCreateButton(_ sender: Any) {
-        //self.navigationController?.popViewController(animated: true)
-        //self.dismiss(animated: true, completion: nil)
+        viewController?.newContact(nameLabel: textNameField.text ?? "Error", phoneNumberLabel: phoneNumberFiled.text ?? "Error")
         navigationController?.popToRootViewController(animated: true)
     }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "gotoBackContactList"){
-           // self.dismiss(animated: false, completion: nil)
-           // self.navigationController?.popViewController(animated: true)
-            print("found!")
-        }
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

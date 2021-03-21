@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PhoneBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RP6-PU-cPW">
@@ -44,7 +44,8 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="wns-UL-aiw">
                             <color key="tintColor" systemColor="linkColor"/>
                             <connections>
-                                <segue destination="Gq8-wM-OU0" kind="show" id="G2f-E9-oJr"/>
+                                <action selector="onClickPlusButton:" destination="BYZ-38-t0r" id="zFv-hS-vL4"/>
+                                <segue destination="Gq8-wM-OU0" kind="show" identifier="gotoAddContact" id="G2f-E9-oJr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -77,39 +78,38 @@
             <objects>
                 <viewController id="Gq8-wM-OU0" customClass="AddContantactViewController" customModule="PhoneBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0t5-CI-pBI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Y4-as-idK">
-                                <rect key="frame" x="25" y="247" width="364" height="34"/>
+                                <rect key="frame" x="25" y="387" width="364" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0BV-IN-oBq">
-                                <rect key="frame" x="25" y="146.5" width="364" height="34"/>
+                                <rect key="frame" x="25" y="286.5" width="364" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9at-Vy-cFv">
-                                <rect key="frame" x="25" y="100" width="364" height="26.5"/>
+                                <rect key="frame" x="25" y="240" width="364" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6S-lL-m1K">
-                                <rect key="frame" x="25" y="306" width="364" height="46"/>
+                                <rect key="frame" x="25" y="446" width="364" height="46"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Create"/>
                                 <connections>
                                     <action selector="onClickCreateButton:" destination="Gq8-wM-OU0" eventType="touchUpInside" id="HUf-Ya-1Ob"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="gotoBackContactList" id="4r8-BZ-Fie"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLG-PZ-l5c">
-                                <rect key="frame" x="25" y="200.5" width="364" height="26.5"/>
+                                <rect key="frame" x="25" y="340.5" width="364" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -136,6 +136,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hp9-dX-csP"/>
+                    <connections>
+                        <outlet property="phoneNumberFiled" destination="6Y4-as-idK" id="STv-2Z-oX0"/>
+                        <outlet property="textNameField" destination="0BV-IN-oBq" id="qhT-i8-SPW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmU-7L-WNr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -218,9 +222,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEd-6a-jDx">
-                                <rect key="frame" x="25" y="454" width="364" height="30"/>
+                                <rect key="frame" x="25" y="454" width="364" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Change"/>
+                                <connections>
+                                    <action selector="onClickChangeButton:" destination="Xqu-tA-qz9" eventType="touchUpInside" id="s0d-B4-T9V"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ov5-AJ-Y4q"/>
@@ -254,9 +262,6 @@
             <point key="canvasLocation" x="2886.9565217391305" y="748.66071428571422"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="4r8-BZ-Fie"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="linkColor">

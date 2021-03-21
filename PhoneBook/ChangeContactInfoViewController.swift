@@ -10,6 +10,8 @@ import UIKit
 class ChangeContactInfoViewController: UIViewController {
     
     
+    var person: Person?
+    var viewController: ViewController?
     var name: String = "Unknown Error"
     var number: String = "Unknown Error"
     @IBOutlet weak var personName: UITextField!
@@ -20,9 +22,24 @@ class ChangeContactInfoViewController: UIViewController {
         self.number = phoneNumberMain
     }
     
+    func setVariablePerson(person: Person){
+        self.person = person
+    }
+    
+    @IBAction func onClickChangeButton(_ sender: Any) {
+        guard let name = personName.text, let number = phoneNumber.text else {
+            return
+        }
+        person?.nickName = personName.text ?? "Error"
+        person?.number = phoneNumber.text ?? "Error"
+        viewController?.contactChanged(person: person!)
+        self.dismiss(animated: true, completion: nil)
+        //navigationController?.popToRootViewController(animated: true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        personName.text = name
-        phoneNumber.text = number
+        personName.text = person?.nickName
+        phoneNumber.text = person?.number
     }
     
     override func viewDidLoad() {
@@ -30,16 +47,5 @@ class ChangeContactInfoViewController: UIViewController {
       //  personName.text = name
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
