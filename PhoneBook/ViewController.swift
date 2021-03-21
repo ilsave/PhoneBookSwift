@@ -58,7 +58,8 @@ extension ViewController: UITableViewDelegate {
         
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChangeContactInfoViewController") as! ChangeContactInfoViewController
-        vc.self.setName("wqwqwq")
+        vc.setVariables(textNameField: footballPlayers[indexPath.row], textPhoneNumberField: footballPlayers[indexPath.row])
+      
       //  vc.personName.text = footballPlayers[indexPath.row]
         self.present(vc, animated: true, completion: nil)
     }
@@ -76,7 +77,11 @@ extension ViewController: UITableViewDataSource{
 //    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        var letters = Set<Character>()
+        for item in footballPlayers {
+            letters.insert(item.character(at: 1) ?? "s")
+        }
+        return letters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,6 +90,21 @@ extension ViewController: UITableViewDataSource{
         cell.textLabel?.text = footballPlayers[indexPath.row]
         
         return cell
+    }
+}
+
+extension String {
+ 
+    func index(at position: Int, from start: Index? = nil) -> Index? {
+        let startingIndex = start ?? startIndex
+        return index(startingIndex, offsetBy: position, limitedBy: endIndex)
+    }
+ 
+    func character(at position: Int) -> Character? {
+        guard position >= 0, let indexPosition = index(at: position) else {
+            return nil
+        }
+        return self[indexPosition]
     }
 }
 

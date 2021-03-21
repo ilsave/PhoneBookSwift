@@ -11,11 +11,18 @@ class ChangeContactInfoViewController: UIViewController {
     
     
     var name: String = "Unknown Error"
+    var number: String = "Unknown Error"
     @IBOutlet weak var personName: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
     
-    public func setName(_ nameMain: String){
-        self.personName.text = nameMain
+    func setVariables(textNameField nameMain: String, textPhoneNumberField phoneNumberMain: String){
+        self.name = nameMain
+        self.number = phoneNumberMain
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        personName.text = name
+        phoneNumber.text = number
     }
     
     override func viewDidLoad() {
