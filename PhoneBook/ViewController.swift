@@ -17,24 +17,63 @@ class ViewController: UIViewController {
                            "Alaba",
                            "Ilsave",
                            "Natural",
-                            "Vdlaud",
-                            "GreenToxic",
-                            "Lewandowski",
-                            "Goretska",
-                            "Nouer",
-                            "Kimmich"]
-
+                           "Vdlaud",
+                           "GreenToxic",
+                           "Lewandowski",
+                           "Goretska",
+                           "Nouer",
+                           "Kimmich"]
+    
+    struct Person {
+        var nickName: String
+        var number: String
+        
+        init(nickNamelabel nickName: String, numberLabel number: String) {
+            self.nickName = nickName
+            self.number = number
+        }
+    }
+    
+    class ContactGroup {
+        var letter: Character
+        var personList: [Person]
+        
+        init(letter: Character, personList: [Person] ) {
+            self.letter = letter
+            self.personList = personList
+        }
+    }
+    
+    var contactsGroup = [ContactGroup]()
+    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
         title = "Contacts"
+        contactsGroup = setUpContactsGroup()
     }
-    
-    struct Person {
-        var nickName: String
-        var number: String
+
+    func setUpContactsGroup() -> [ContactGroup]{
+        var inList = [ContactGroup]()
+        
+        inList.append(ContactGroup.init(
+                        letter: "A",
+                        personList: [Person.init(nickNamelabel: "Anastasia" ,numberLabel: "+79200638388"),
+                                     Person.init(nickNamelabel: "Angelina" ,numberLabel: "+79200638388"),
+                                     Person.init(nickNamelabel: "Anna" ,numberLabel: "+79200638388"),
+                                     Person.init(nickNamelabel: "Anton" ,numberLabel: "+79200638388"),
+                                     Person.init(nickNamelabel: "Arcadiy" ,numberLabel: "+79200638388")
+        ]))
+        
+        inList.append(ContactGroup.init(
+                        letter: "B",
+                        personList: [Person.init(nickNamelabel: "Boris" ,numberLabel: "+79200638388"),
+                                     Person.init(nickNamelabel: "Brucks" ,numberLabel: "+79200638388"),
+        ]))
+        return inList
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -52,15 +91,15 @@ extension ViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         //other approach
-//        let viewController = ChangeContactInfoViewController()
-//      //  viewController.personName.text = "qwq"
-//        navigationController?.pushViewController(viewController, animated: true)
+        //        let viewController = ChangeContactInfoViewController()
+        //      //  viewController.personName.text = "qwq"
+        //        navigationController?.pushViewController(viewController, animated: true)
         
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChangeContactInfoViewController") as! ChangeContactInfoViewController
         vc.setVariables(textNameField: footballPlayers[indexPath.row], textPhoneNumberField: footballPlayers[indexPath.row])
-      
-      //  vc.personName.text = footballPlayers[indexPath.row]
+        
+        //  vc.personName.text = footballPlayers[indexPath.row]
         self.present(vc, animated: true, completion: nil)
     }
 }
@@ -71,10 +110,10 @@ extension ViewController: UITableViewDataSource{
         return footballPlayers.count
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        //key of dic (massiv)
-//        <#code#>
-//    }
+    //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    //        //key of dic (massiv)
+    //        <#code#>
+    //    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         var letters = Set<Character>()
@@ -94,12 +133,12 @@ extension ViewController: UITableViewDataSource{
 }
 
 extension String {
- 
+    
     func index(at position: Int, from start: Index? = nil) -> Index? {
         let startingIndex = start ?? startIndex
         return index(startingIndex, offsetBy: position, limitedBy: endIndex)
     }
- 
+    
     func character(at position: Int) -> Character? {
         guard position >= 0, let indexPosition = index(at: position) else {
             return nil
