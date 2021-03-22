@@ -34,9 +34,15 @@ struct Call {
     var time: String
 }
 
+protocol ContactDelegate: class {
+    func newContact(nameLabel name: String, phoneNumberLabel phoneNumber: String)
+    func contactChanged(person: Person)
+}
 
 
-class ViewController: UIViewController {
+
+
+class ViewController: UIViewController, ContactDelegate {
     
     @IBOutlet var tableView:  UITableView!
     
@@ -68,19 +74,29 @@ class ViewController: UIViewController {
                         personList: [Person.init(id: 6, nickNamelabel: "Boris" ,numberLabel: "+79200638388"),
                                      Person.init(id: 7, nickNamelabel: "Brucks" ,numberLabel: "+79200638388"),
                         ]))
+        
+        inList.append(ContactGroup.init(
+                        letter: "С",
+                        personList: [Person.init(id: 8, nickNamelabel: "Claudia" ,numberLabel: "+79200638388"),
+                                     Person.init(id: 9, nickNamelabel: "Charlotte" ,numberLabel: "+79200638388"),
+                                     Person.init(id: 10, nickNamelabel: "Coonor" ,numberLabel: "+79200638388"),
+                                     Person.init(id: 11, nickNamelabel: "Cameron" ,numberLabel: "+79200638388"),
+                                     Person.init(id: 12, nickNamelabel: "Cotlin)" ,numberLabel: "+79200638388"),
+                                     Person.init(id: 13, nickNamelabel: "Cara" ,numberLabel: "+79200638388"),
+                        ]))
+        
         return inList
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "gotoAddContact") {
-            print("i was there")
             let destination = segue.destination as! AddContantactViewController
-            destination.viewController = self
+            destination.delegate = self
         } 
     }
     
-    open func newContact(nameLabel name: String, phoneNumberLabel phoneNumber: String){
+    func newContact(nameLabel name: String, phoneNumberLabel phoneNumber: String){
         print(" New contact \(name), \(phoneNumber)")
         
         var count = 0
@@ -128,13 +144,10 @@ class ViewController: UIViewController {
                 print(contactsGroup[indexLetter].personList[indexContact])
             }
         }
-        
+    
         self.tableView .reloadData()
     }
     
-    func sortChangedData(){
-        
-    }
     
 }
 
@@ -156,12 +169,10 @@ extension ViewController: UITableViewDelegate {
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+        
         let now = Date()
-        
         let formatter = DateFormatter()
-        
         formatter.timeZone = TimeZone.current
-        
         formatter.dateFormat = "HH:mm"
         
         let dateString = formatter.string(from: now)
@@ -206,7 +217,7 @@ extension ViewController: UITableViewDataSource{
         let change = UIContextualAction(style: .normal, title: "Change") { (action, view, completionHandler) in
             completionHandler(true)
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChangeContactInfoViewController") as! ChangeContactInfoViewController
-            vc.viewController = self
+            vc.delegate = self
             vc.setVariablePerson(person: Person.init(id: self.contactsGroup[indexPath.section].personList[indexPath.row].id,
                                                      nickNamelabel: self.contactsGroup[indexPath.section].personList[indexPath.row].nickName,
                                                      numberLabel: self.contactsGroup[indexPath.section].personList[indexPath.row].number))

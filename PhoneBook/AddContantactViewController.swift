@@ -9,7 +9,8 @@ import UIKit
 
 class AddContantactViewController: UIViewController {
     
-    var viewController: ViewController?
+    weak var viewController: ViewController?
+    weak var delegate: ContactDelegate?
     @IBOutlet var textNameField: UITextField!
     @IBOutlet var phoneNumberFiled: UITextField!
 
@@ -22,7 +23,7 @@ class AddContantactViewController: UIViewController {
     
     @IBAction func onClickCreateButton(_ sender: Any) {
         
-        guard let viewController = viewController,
+        guard let delegate = delegate,
               let name = textNameField.text,
               let phoneNumber = phoneNumberFiled.text else {
             return
@@ -33,7 +34,7 @@ class AddContantactViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
-        viewController.newContact(nameLabel: name, phoneNumberLabel: phoneNumber)
+        delegate.newContact(nameLabel: name, phoneNumberLabel: phoneNumber)
         navigationController?.popToRootViewController(animated: true)
     }
     

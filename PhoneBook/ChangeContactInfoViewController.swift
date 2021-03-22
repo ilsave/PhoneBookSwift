@@ -11,7 +11,7 @@ class ChangeContactInfoViewController: UIViewController {
     
     
     var person: Person?
-    var viewController: ViewController?
+    weak var delegate: ContactDelegate?
     var name: String?
     var number: String?
     @IBOutlet weak var personName: UITextField!
@@ -30,12 +30,12 @@ class ChangeContactInfoViewController: UIViewController {
         guard let name = personName.text,
               let number = phoneNumber.text,
               var person = person,
-              let viewController = viewController  else {
+              let delegate = delegate  else {
             return
         }
         person.nickName = name
         person.number = number
-        viewController.contactChanged(person: person)
+        delegate.contactChanged(person: person)
         self.dismiss(animated: true, completion: nil)
     }
     
