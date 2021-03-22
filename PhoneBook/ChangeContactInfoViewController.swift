@@ -17,10 +17,6 @@ class ChangeContactInfoViewController: UIViewController {
     @IBOutlet weak var personName: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
     
-    func setVariables(textNameField nameMain: String, textPhoneNumberField phoneNumberMain: String){
-        self.name = nameMain
-        self.number = phoneNumberMain
-    }
     
     func setVariablePerson(person: Person){
         self.person = person
