@@ -12,8 +12,8 @@ class ChangeContactInfoViewController: UIViewController {
     
     var person: Person?
     var viewController: ViewController?
-    var name: String = "Unknown Error"
-    var number: String = "Unknown Error"
+    var name: String?
+    var number: String?
     @IBOutlet weak var personName: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
     
@@ -27,25 +27,23 @@ class ChangeContactInfoViewController: UIViewController {
     }
     
     @IBAction func onClickChangeButton(_ sender: Any) {
-        guard let name = personName.text, let number = phoneNumber.text else {
+        guard let name = personName.text,
+              let number = phoneNumber.text,
+              var person = person,
+              let viewController = viewController  else {
             return
         }
-        person?.nickName = personName.text ?? "Error"
-        person?.number = phoneNumber.text ?? "Error"
-        viewController?.contactChanged(person: person!)
+        person.nickName = name
+        person.number = number
+        viewController.contactChanged(person: person)
         self.dismiss(animated: true, completion: nil)
-        //navigationController?.popToRootViewController(animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        personName.text = person?.nickName
-        phoneNumber.text = person?.number
+        guard let person = person else {
+            return
+        }
+        personName.text = person.nickName
+        phoneNumber.text = person.number
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      //  personName.text = name
-        // Do any additional setup after loading the view.
-    }
-
 }

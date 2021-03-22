@@ -72,10 +72,6 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func onClickPlusButton(_ sender: Any) {
-        print("you tapped plus")
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "gotoAddContact") {
             print("i was there")
@@ -89,12 +85,11 @@ class ViewController: UIViewController {
         
         var count = 0
         for indexLetter in 0..<contactsGroup.count {
-            for indexContact in 0..<contactsGroup[indexLetter].personList.count{
+            for _ in 0..<contactsGroup[indexLetter].personList.count{
                 count = count + 1
             }
         }
         
-        let newPerson = Person.init(id: count + 1, nickNamelabel: name, numberLabel: phoneNumber)
         var bol = false
         for indexLetter in 0..<contactsGroup.count {
             if (contactsGroup[indexLetter].letter == name.prefix(1)){
@@ -147,7 +142,6 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("you tapped me !")
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -211,7 +205,6 @@ extension ViewController: UITableViewDataSource{
         
         let change = UIContextualAction(style: .normal, title: "Change") { (action, view, completionHandler) in
             completionHandler(true)
-            print("You tapped change! \(indexPath.row)")
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChangeContactInfoViewController") as! ChangeContactInfoViewController
             vc.viewController = self
             vc.setVariablePerson(person: Person.init(id: self.contactsGroup[indexPath.section].personList[indexPath.row].id,
@@ -224,20 +217,5 @@ extension ViewController: UITableViewDataSource{
         
         let swipe = UISwipeActionsConfiguration(actions: [delete, change])
         return swipe
-    }
-}
-
-extension String {
-    
-    func index(at position: Int, from start: Index? = nil) -> Index? {
-        let startingIndex = start ?? startIndex
-        return index(startingIndex, offsetBy: position, limitedBy: endIndex)
-    }
-    
-    func character(at position: Int) -> Character? {
-        guard position >= 0, let indexPosition = index(at: position) else {
-            return nil
-        }
-        return self[indexPosition]
     }
 }

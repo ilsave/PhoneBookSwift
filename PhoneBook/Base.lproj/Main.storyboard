@@ -57,7 +57,7 @@
             </objects>
             <point key="canvasLocation" x="2859.4202898550725" y="76.339285714285708"/>
         </scene>
-        <!--Item-->
+        <!--Call history-->
         <scene sceneID="gfe-z6-B6J">
             <objects>
                 <viewController id="Tsn-bu-cpb" customClass="CallingListViewController" customModule="PhoneBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -79,7 +79,9 @@
                             <constraint firstItem="vgw-b5-pnM" firstAttribute="trailing" secondItem="jeS-Dr-ARY" secondAttribute="trailing" id="FHA-mj-YMk"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="9Bj-Nr-V52"/>
+                    <tabBarItem key="tabBarItem" title="Call history" image="bell" catalog="system" id="9Bj-Nr-V52">
+                        <color key="badgeColor" red="0.00045931981330000002" green="0.032892965449999999" blue="0.55867059450000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="tableView" destination="jeS-Dr-ARY" id="toc-Y7-kco"/>
                     </connections>
@@ -178,11 +180,11 @@
             </objects>
             <point key="canvasLocation" x="871" y="375"/>
         </scene>
-        <!--Item-->
+        <!--Contacts-->
         <scene sceneID="q8s-g1-9n8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QWc-so-O4Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="AtJ-hf-16J"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="book" catalog="system" id="AtJ-hf-16J"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="wYd-aE-tmi">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -278,6 +280,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bell" catalog="system" width="128" height="124"/>
+        <image name="book" catalog="system" width="128" height="102"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
